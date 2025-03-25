@@ -6,8 +6,8 @@ export default class Currency {
     if (typeof name !== 'string') {
       throw new TypeError('Name must be a string');
     }
-    this.code = code;
-    this.name = name;
+    this._code = code;
+    this._name = name;
   }
 
   get code() {
@@ -22,7 +22,7 @@ export default class Currency {
   }
 
   get name() {
-    return this._code;
+    return this._name;
   }
 
   set name(value) {

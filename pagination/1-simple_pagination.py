@@ -45,4 +45,3 @@ class Server:
         if first_index >= len(data):
             return[]
         return data[first_index:last_index]
-

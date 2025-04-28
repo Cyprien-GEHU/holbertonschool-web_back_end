@@ -4,6 +4,7 @@ from typing import Generator
 import asyncio
 import random
 
+
 async def async_generator() -> Generator[float, None, None]:
     """the function"""
     for _ in range(10):

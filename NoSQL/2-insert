@@ -1,4 +1,4 @@
 // command to insert some data in databases
-db.school.insertOne({
+db.school.insert({
     name:"Holberton school",
 });

@@ -1,0 +1,4 @@
+// command to insert some data in databases
+db.school.insertOne({
+    name:"Holberton school",
+});

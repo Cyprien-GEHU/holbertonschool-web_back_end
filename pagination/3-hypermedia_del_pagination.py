@@ -41,7 +41,8 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """the function deletion-resilient hypermedia pagination"""
-        assert isinstance(index, int) and 0 <= index < len(self.indexed_dataset())
+        assert isinstance(index, int) and \
+            0 <= index < len(self.indexed_dataset())
         assert isinstance(page_size, int) and page_size > 0
 
         csv = self.indexed_dataset()

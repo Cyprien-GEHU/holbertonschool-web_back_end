@@ -1,0 +1,2 @@
+// find all document in shchool
+db.school.find()

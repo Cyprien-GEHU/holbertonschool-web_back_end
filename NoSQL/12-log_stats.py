@@ -20,8 +20,8 @@ def log_stats():
     print(f"{num_logs} logs")
     print("Methods:")
     for method in methods:
-        value = collection.count_documents({"method": method})
-        print(f"\tmethod {method}: {value}")
+        count = collection.count_documents({"method": method})
+        print(f"\tmethod {method}: {count}")
     print(f"{status_check} status check")
 
 

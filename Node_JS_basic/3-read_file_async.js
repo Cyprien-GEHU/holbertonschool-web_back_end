@@ -30,6 +30,8 @@ const countStudents = async (filecsv) => {
   console.log(`Number of students: ${studentData.length}`);
   console.log(`Number of students in CS: ${studentCS.length}. List: ${studentCS.join(', ')}`);
   console.log(`Number of students in SWE: ${studentSWE.length}. List: ${studentSWE.join(', ')}`);
+
+  return {studentData, studentCS, studentSWE};
 };
 
 module.exports = countStudents;

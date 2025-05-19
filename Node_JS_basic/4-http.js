@@ -1,4 +1,4 @@
-// this function will a small with the module Node HTTP
+// this function will a small http server with the module Node HTTP
 
 const httpServer = require('http');
 

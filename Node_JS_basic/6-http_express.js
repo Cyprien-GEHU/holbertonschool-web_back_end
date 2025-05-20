@@ -1,5 +1,3 @@
-// Install a smal http server with module express
-
 const express = require('express');
 
 const app = express();

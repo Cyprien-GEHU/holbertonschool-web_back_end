@@ -8,7 +8,7 @@ const countStudents = async (filecsv) => {
   try {
     csv = await fs.readFileSync(filecsv, 'utf-8');
   } catch (err) {
-    throw new Error('cannot load the database');
+    throw new Error('Cannot load the database');
   }
 
   const datacsv = csv.split('\n').slice(1);

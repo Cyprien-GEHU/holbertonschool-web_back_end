@@ -20,7 +20,7 @@ class LRUCache(BaseCaching):
         """
         if key is None or item is None:
             return
-        
+
         self.cache_data[key] = item
         if key in self.order_item:
             self.order_item.remove(key)
@@ -31,11 +31,11 @@ class LRUCache(BaseCaching):
             del self.cache_data[discard]
             print(f'DISCARD: {discard}')
 
-
     def get(self, key):
         """
         get value of the cache
         if the key is None None we return None
+        when we use get we change the order of item
         """
         if key is None:
             return None
@@ -43,4 +43,4 @@ class LRUCache(BaseCaching):
         if result is not None:
             self.order_item.remove(key)
             self.order_item.append(key)
-        return(result)
+        return (result)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" lifo cache dictionary task"""
+""" lru cache dictionary task"""
 
 from base_caching import BaseCaching
 

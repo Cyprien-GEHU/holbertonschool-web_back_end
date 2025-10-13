@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Basic dictionary task"""
+""" fifo dictionary task"""
 
 from base_caching import BaseCaching
 

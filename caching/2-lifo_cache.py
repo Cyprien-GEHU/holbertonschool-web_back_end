@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" Basic dictionary task"""
+""" lifo cache dictionary task"""
 
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """ the FIFO Caching programme """
 
     def __init__(self):
@@ -23,12 +23,9 @@ class FIFOCache(BaseCaching):
 
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             if key not in self.cache_data:
-                discard = self.order_item.pop(0)
+                discard = self.order_item.pop(-1)
                 del self.cache_data[discard]
                 print(f'DISCARD: {discard}')
-
-        if key in self.order_item:
-            self.cache_data.remove(key)
 
         self.cache_data[key] = item
         self.order_item.append(key)

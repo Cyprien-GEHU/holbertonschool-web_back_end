@@ -15,7 +15,7 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """
         put key value ot the cache
-        apply fifo (first in first out) cache
+        apply lifo (last in first out) cache
         if the key is None or item is None we return
         """
         if key is None or item is None:

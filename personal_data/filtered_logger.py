@@ -64,3 +64,26 @@ def get_db() -> connection.MySQLConnection:
         host=host,
         database=name
     )
+
+
+def main() -> None:
+    """the main function"""
+    db = get_db()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM users;")
+
+    header = [field[0] for field in cur.description]
+    logger = get_logger()
+
+    for line in cur:
+        info_answer = ''
+        for field, para in zip(line, header):
+            info_answer += f'{para}={(field)}; '
+        logger.info(info_answer)
+
+    cur.close()
+    db.close()
+
+
+if __name__ == '__main__':
+    main()

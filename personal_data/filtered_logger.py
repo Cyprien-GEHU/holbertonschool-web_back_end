@@ -6,6 +6,8 @@ the programme return the log message
 import re
 from typing import List
 import logging
+import os
+from mysql.connector import connection
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
@@ -48,3 +50,17 @@ def get_logger() -> logging.Logger:
     logger.addHandler(SH)
 
     return logger
+
+
+def get_db() -> connection.MySQLConnection:
+    """get a data from database"""
+    user = os.environ.get("PERSONAL_DATA_DB_USERNAME", "root")
+    password = os.environ.get("PERSONAL_DATA_DB_PASSWORD", "")
+    host = os.environ.get("PERSONAL_DATA_DB_HOST", "localhost")
+    name = os.environ.get("PERSONAL_DATA_DB_NAME")
+    return connection.MySQLConnection(
+        user=user,
+        password=password,
+        host=host,
+        database=name
+    )

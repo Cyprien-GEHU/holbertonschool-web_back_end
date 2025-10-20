@@ -9,6 +9,7 @@ import logging
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
@@ -35,7 +36,8 @@ def filter_datum(fields: List[str], redaction: str, message: str,
                          f'{field}={redaction}{separator}', message)
     return message
 
-def get_logger()-> logging.Logger:
+
+def get_logger() -> logging.Logger:
     """create a logger"""
     logger = logging.getLogger("user_data")
     logger.setLevel(logging.INFO)
@@ -46,5 +48,3 @@ def get_logger()-> logging.Logger:
     logger.addHandler(SH)
 
     return logger
-
-

@@ -22,7 +22,8 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         """we send all value form the log record to filter_datum"""
-        return filter_datum(self.fields, self.REDACTION, super().format(record), self.SEPARATOR)
+        return filter_datum(self.fields, self.REDACTION,
+                            super().format(record), self.SEPARATOR)
 
 
 def filter_datum(fields: List[str], redaction: str, message: str,

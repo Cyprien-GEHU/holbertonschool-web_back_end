@@ -8,3 +8,9 @@ def hash_password(password: str) -> bytes:
     """ function to encrypt the password """
     dataBytes = password.encode('utf-8')
     return bcrypt.hashpw(dataBytes, bcrypt.gensalt())
+
+
+def is_valid(hashed_password: bytes, password: str) -> bool:
+    """ Check is the good password"""
+    encrypted_Password = password.encode('utf-8')
+    return bcrypt.checkpw(encrypted_Password, hashed_password)

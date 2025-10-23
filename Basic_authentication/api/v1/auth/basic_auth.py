@@ -2,7 +2,6 @@
 """
 Basic authentification system
 """
-
 import base64
 from api.v1.auth.auth import Auth
 
@@ -34,3 +33,16 @@ class BasicAuth(Auth):
             return base.decode('utf-8')
         except Exception:
             return None
+
+    def extract_user_credentials(
+            self, decoded_base64_authorization_header: str) -> (str, str):
+        """ extract user credentials function"""
+        if decoded_base64_authorization_header is None:
+            return (None, None)
+        if type(decoded_base64_authorization_header) is not str:
+            return (None, None)
+        if ":" not in decoded_base64_authorization_header:
+            return (None, None)
+        mail = decoded_base64_authorization_header.split(':')[0]
+        password = decoded_base64_authorization_header.split(":")[1]
+        return (mail, password)

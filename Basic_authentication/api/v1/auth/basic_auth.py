@@ -46,7 +46,7 @@ class BasicAuth(Auth):
         if ":" not in decoded_base64_authorization_header:
             return (None, None)
         mail = decoded_base64_authorization_header.split(':')[0]
-        password = decoded_base64_authorization_header.split(":")[1]
+        password = "".join(decoded_base64_authorization_header.split(':', 1)[1:])
         return (mail, password)
 
     def user_object_from_credentials(

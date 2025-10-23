@@ -46,7 +46,7 @@ class BasicAuth(Auth):
         if ":" not in decoded_base64_authorization_header:
             return (None, None)
         mail = decoded_base64_authorization_header.split(':')[0]
-        password = "".join(decoded_base64_authorization_header.split(':', 1)[1:])
+        password = decoded_base64_authorization_header.split(":")[1]
         return (mail, password)
 
     def user_object_from_credentials(
@@ -56,6 +56,7 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or type(user_pwd) is not str:
             return None
+        User.load_from_file()
         currentUser = User.search({"email": user_email})
         for user in currentUser:
             if user and user.is_valid_password(user_pwd):

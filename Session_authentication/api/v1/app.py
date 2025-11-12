@@ -28,12 +28,13 @@ if os.getenv('AUTH_TYPE') == "session_auth":
 def before_request():
     """ function before any request """
     path_exculde = ['/api/v1/status/', '/api/v1/unauthorized/',
-                    '/api/v1/forbidden/']
+                    '/api/v1/forbidden/', '/api/v1/auth_session/login/']
     if auth is None:
         return
     if not auth.require_auth(request.path, path_exculde):
         return
-    if auth.authorization_header(request) is None:
+    if (auth.authorization_header(request) is None
+            and auth.current_user(request) is None):
         abort(401)
     if auth.current_user(request) is None:
         abort(403)

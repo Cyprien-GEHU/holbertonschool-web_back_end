@@ -42,10 +42,13 @@ class SessionAuth(Auth):
         if not session_cookie:
             return False
 
-        session_id = self.user_id_for_session_id(session_cookie)
+        user_id = self.user_id_for_session_id(session_cookie)
 
-        if not session_id:
+        if not user_id:
             return False
 
-        del self.user_id_by_session_id[session_id]
+        try:
+            del self.user_id_by_session_id[session_cookie]
+        except KeyError:
+            return False
         return True

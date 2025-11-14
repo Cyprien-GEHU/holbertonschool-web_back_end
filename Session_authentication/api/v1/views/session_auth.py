@@ -10,7 +10,7 @@ from models.user import User
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
-    """ POST /api/v1//auth_session/login
+    """ POST /api/v1/auth_session/login
     Return:
       - Error or the user
     """
@@ -40,10 +40,13 @@ def login():
         return cur_user
 
 
-@app_views.route('/api/v1/auth_session/logout', methods=['POST'],
+@app_views.route('/api/v1/auth_session/logout', methods=['DELETE'],
                  strict_slashes=False)
 def logout():
-    """logout system"""
+    """ DELETE /api/v1/auth_session/logout
+    Return:
+      - Error or empty json
+    """
 
     logout = auth.destroy_session(request)
 

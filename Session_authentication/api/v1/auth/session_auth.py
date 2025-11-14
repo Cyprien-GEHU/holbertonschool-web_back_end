@@ -32,7 +32,7 @@ class SessionAuth(Auth):
         return User.get(self.user_id_for_session_id(session_id))
 
     def destroy_session(self, request=None):
-        """ logout system"""
+        """ logout system """
 
         if request is None:
             return False

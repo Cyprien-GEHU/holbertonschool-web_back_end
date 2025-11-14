@@ -3,7 +3,6 @@
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views
-from api.v1.app import auth
 import os
 from models.user import User
 
@@ -47,9 +46,10 @@ def logout():
     Return:
       - Error or empty json
     """
+    from api.v1.app import auth
 
-    logout = auth.destroy_session(request)
+    session_logout = auth.destroy_session(request)
 
-    if not logout:
+    if not session_logout:
         abort(404)
     return jsonify({}), 200

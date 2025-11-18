@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """app system"""
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
 
 
@@ -37,6 +37,17 @@ def login():
         response = jsonify({"email": email, "message": "logged in"})
         response.set_cookie('session_id', session_id)
         return response
+    else:
+        abort(401)
+
+
+@app.route("/sessions", methods=['DELETE'], strict_slashes=False)
+def logout():
+    session_cookie = request.cookie.get("session_id")
+    user = AUTH.get_user_from_session_id(session_cookie)
+    if user:
+        AUTH.destroy_session(user.id)
+        return redirect('/')
     else:
         abort(401)
 

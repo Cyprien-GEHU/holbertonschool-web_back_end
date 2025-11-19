@@ -65,6 +65,7 @@ class Auth:
         """destroy the session"""
         if user_id:
             self._db.update_user(user_id, session_id=None)
+            return None
 
     def get_reset_password_token(self, email: str) -> str:
         """reset password token"""

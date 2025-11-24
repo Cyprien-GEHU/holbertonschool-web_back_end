@@ -6,6 +6,7 @@ from parameterized import parameterized
 from unittest.mock import Mock
 from utils import access_nested_map, memoize, get_json
 
+
 class TestAccessNestedMap(unittest.TestCase):
     """ Nested mapd test """
     @parameterized.expand([
@@ -13,7 +14,6 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-
     def test_access_nested_map(self, nested_map, path, result):
         """ test acces nested map function"""
-        self.assertEqual((nested_map, path), result)
+        self.assertEqual(access_nested_map(nested_map, path), result)

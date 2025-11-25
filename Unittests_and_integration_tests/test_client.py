@@ -2,7 +2,7 @@
 """client test program"""
 
 import unittest
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from unittest.mock import Mock, patch, PropertyMock
 from client import GithubOrgClient
 from fixtures import TEST_PAYLOAD
@@ -58,7 +58,7 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(org_license, result)
 
 
-@parameterized.expand([
+@parameterized_class([
     ("org_payload"), ("repos_payload"), ("expected_repos"),
     ("apache2_repos")
 ], TEST_PAYLOAD)

@@ -47,8 +47,8 @@ class TestGetJson(unittest.TestCase):
             self.assertEqual(result, test_payload)
 
 
-class TestCase(unittest.TestCase):
-    """ Test Case class"""
+class TestMemoize(unittest.TestCase):
+    """ Test memorize class"""
     def test_memoize(self):
         """test memoize method"""
         class TestClass:

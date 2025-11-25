@@ -5,6 +5,7 @@ import unittest
 from parameterized import parameterized
 from unittest.mock import Mock, patch, PropertyMock
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -55,3 +56,22 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Test has license function """
         org_license = GithubOrgClient.has_license(license, key)
         self.assertEqual(org_license, result)
+
+
+@parameterized.expand([
+    ("org_payload"), ("repos_payload"), ("expected_repos"),
+    ("apache2_repos")
+], TEST_PAYLOAD)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """ class test intergration git hub org client"""
+    @classmethod
+    def setUpClass(cls):
+        """set up class method"""
+        cls.get_patcher = patch('requests.get', side_effect=[
+            cls.org_payload, cls.repos_repos_payload])
+        cls.mocked_get = cls.get_patcher.start()
+
+    @classmethod
+    def tearDownClass(cls):
+        """ tear down class method"""
+        cls.get_patcher.stop()

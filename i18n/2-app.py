@@ -18,11 +18,12 @@ class Config():
 app.config.from_object(Config)
 
 
-def get_local():
+def get_locale():
     """ get local with babel """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-babel.init_app(app, locale_selector=get_local)
+
+babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route('/', methods=['GET'])

@@ -13,6 +13,7 @@ redis_data = Union[int, str, bytes, float]
 class Cache():
     """class cache for the memory"""
     def __init__(self):
+        """ instance of the class """
         self._redis = redis.Redis()
         self._redis.flushdb()
 

@@ -46,7 +46,7 @@ def replay(function: Callable):
         str_time = "time"
     print('{} was called {} {}:'.format(key_func, all_call, str_time))
     for key, value in zip(input_f, output_f):
-        print("{}(*{}) -> {}".format(key_func,
+        print('{}(*{}) -> {}'.format(key_func,
                                      key.decode('utf-8'),
                                      value.decode("utf-8")))
 

@@ -34,10 +34,10 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
-def replay(function: Callable):
+def replay(func: Callable):
     """replay function"""
     R = redis.Redis()
-    key_func = function.__qualname__
+    key_func = func.__qualname__
     input_f = R.lrange("{}:inputs".format(key_func), 0, -1)
     output_f = R.lrange("{}:outputs".format(key_func), 0, -1)
     all_call = len(input_f)

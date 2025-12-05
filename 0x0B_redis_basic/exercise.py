@@ -45,7 +45,7 @@ def replay(func: Callable):
     for key, value in zip(input_f, output_f):
         str_key = key.decode('utf-8')
         str_value = value.decode("utf-8")
-        print('{}(*{}) -> {}'.format(key_func, str_key, str_value))
+        print('{}(*{}) -> {}'.format(str(key_func), str(str_key), str(str_value)))
 
 
 class Cache():

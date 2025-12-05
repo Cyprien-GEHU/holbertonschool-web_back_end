@@ -40,11 +40,8 @@ def replay(func: Callable):
     key_func = func.__qualname__
     input_f = r.lrange("{}:inputs".format(key_func), 0, -1)
     output_f = r.lrange("{}:outputs".format(key_func), 0, -1)
-    all_call = len(input_f)
-    str_time = 'times'
-    if all_call == 1:
-        str_time = "time"
-    print('{} was called {} {}:'.format(key_func, all_call, str_time))
+    all_call = int(r.get(key_func))
+    print('{} was called {} times:'.format(key_func, all_call))
     for key, value in zip(input_f, output_f):
         str_key = key.decode('utf-8')
         str_value = value.decode("utf-8")

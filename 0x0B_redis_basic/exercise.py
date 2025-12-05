@@ -36,16 +36,18 @@ def call_history(method: Callable) -> Callable:
 
 def replay(func: Callable):
     """replay function"""
+    if not func:
+        return None
     r = redis.Redis()
     key_func = func.__qualname__
     input_f = r.lrange("{}:inputs".format(key_func), 0, -1)
     output_f = r.lrange("{}:outputs".format(key_func), 0, -1)
     all_call = int(r.get(key_func))
+    str_key = [key.decode('utf-8') for key in input_f]
+    str_value = [value.decode("utf-8") for value in output_f]
     print('{} was called {} times:'.format(key_func, all_call))
-    for key, value in zip(input_f, output_f):
-        str_key = key.decode('utf-8')
-        str_value = value.decode("utf-8")
-        print('{}(*{}) -> {}'.format(str(key_func), str(str_key), str(str_value)))
+    for key, value in zip(str_key, str_value):
+        print('Cache.store(*{}) -> {}'.format(str(key), str(value)))
 
 
 class Cache():

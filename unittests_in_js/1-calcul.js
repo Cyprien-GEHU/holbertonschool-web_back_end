@@ -1,0 +1,17 @@
+const calculateNumber = (type, a, b) => {
+    if (type === "SUM") {
+        return Math.round(a) + Math.round(b);
+    }
+    if (type === "SUBTRACT") {
+        return Math.round(a) - Math.round(b);
+    }
+    if (type === "DIVIDE")
+    {
+        if (b == 0){
+            return 'error'
+        }
+        return Math.round(a) / Math.round(b);
+    }
+    return "wrong type";
+}
+module.exports = calculateNumber;

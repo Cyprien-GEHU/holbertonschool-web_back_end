@@ -39,7 +39,7 @@ describe("calculateNumber", () => {
         assert.strictEqual(calculateNumber("SUBTRAC", 2.4, 8.8), "wrong type");
     });
 
-        it("Should return subtarction of intergers with type DIVIDE", () => {
+        it("Should return diviton of intergers with type DIVIDE", () => {
         assert.strictEqual(calculateNumber("DIVIDE", 5, 2), 2.5);
         assert.strictEqual(calculateNumber("DIVIDE", 6, -5), -1.2);
         assert.strictEqual(calculateNumber("DIVIDE", -9, -7), 1.2857142857142858);
@@ -49,7 +49,7 @@ describe("calculateNumber", () => {
         assert.strictEqual(calculateNumber("DIVID", 18, 6), "wrong type")
     });
 
-     it("Should return subtraction of float with type DIVIDE", () => {
+     it("Should return divition of float with type DIVIDE", () => {
         assert.strictEqual(calculateNumber("DIVIDE", 4.2, 6.9), 0.5714285714285714);
         assert.strictEqual(calculateNumber("DIVIDE", 6.3, -4.2), -1.5);
         assert.strictEqual(calculateNumber("DIVIDE", -3.3, -9.9), 0.3);

@@ -4,5 +4,8 @@
   },
   "scripts": {
     "test": "mocha ./*.test.js"
+  },
+  "devDependencies": {
+    "chai": "^6.2.1"
   }
 }

@@ -5,8 +5,8 @@ const Utils = require("./utils");
 
 describe("Send request to api", () => {
     it("return the sum of total amount and total shipping", () => {
-        const spy = sinon.spy(console, "log");
         const stub = sinon.stub(Utils, "calculateNumber").returns(10);
+        const spy = sinon.spy(console, "log");
 
         sendPaymentRequestToApi(100,20);
         assert(stub.calledOnceWithExactly("SUM", 100, 20));
